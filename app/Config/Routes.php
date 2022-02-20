@@ -46,6 +46,11 @@ $routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
         'controller' => 'MasterFakultasController',
         'except' => ['show'],
     ]);
+    $routes->presenter('master_prodi', [
+        'websafe' => true,
+        'controller' => 'MasterProdiController',
+        'except' => ['show'],
+    ]);
     $routes->presenter('master_dosen', [
         'websafe' => true,
         'controller' => 'MasterDosenController',
