@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Models\Dosen;
 use CodeIgniter\RESTful\ResourceController;
-use Exception;
 
 class MasterDosenController extends ResourceController
 {
