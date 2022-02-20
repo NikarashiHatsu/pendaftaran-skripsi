@@ -22,7 +22,13 @@
                     <label for="tanggal" class="label">
                         <span class="label-text">Tanggal</span>
                     </label>
-                    <input type="date" name="tanggal" id="tanggal" class="input input-bordered w-full" value="<?= old('tanggal') ?>" />
+                    <input type="date" name="tanggal" id="tanggal" class="input input-bordered w-full input-disabled" readonly value="<?= date('Y-m-d'); ?>" />
+                </div>
+                <div class="col-span-12 sm:col-span-6 md:col-span-4">
+                    <label for="nim" class="label">
+                        <span class="label-text">NIM</span>
+                    </label>
+                    <input type="text" name="nim" id="nim" class="input input-bordered w-full input-disabled" readonly value="<?= session()->user->username ?>" />
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4">
                     <label for="judul_skripsi" class="label">
@@ -31,19 +37,13 @@
                     <input type="text" name="judul_skripsi" id="judul_skripsi" class="input input-bordered w-full" value="<?= old('judul_skripsi') ?>" />
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4">
-                    <label for="nim" class="label">
-                        <span class="label-text">NIM</span>
-                    </label>
-                    <input type="text" name="nim" id="nim" class="input input-bordered w-full" value="<?= old('nim') ?>" />
-                </div>
-                <div class="col-span-12 sm:col-span-6 md:col-span-4">
                     <label for="nip_pembimbing1" class="label">
                         <span class="label-text">Pembimbing 1</span>
                     </label>
-                    <select name="nip_pembimbing1" id="nip_pembimbing1" class="select select-bordered w-full">
+                    <select name="nip_pembimbing1" id="nip_pembimbing1" readonly class="select select-bordered w-full input-disabled">
                         <?php if (count($dosens) > 0): ?>
                             <?php foreach($dosens as $dosen): ?>
-                                <option value="<?= $dosen->nip ?>">
+                                <option <?= $dosen->nip == $mahasiswa->nip_pembimbing1 ? "selected" : "" ?> value="<?= $dosen->nip ?>">
                                     (<?= $dosen->nip ?>) <?= $dosen->nama ?>
                                 </option>
                             <?php endforeach; ?>
@@ -56,10 +56,10 @@
                     <label for="nip_pembimbing2" class="label">
                         <span class="label-text">Pembimbing 2</span>
                     </label>
-                    <select name="nip_pembimbing2" id="nip_pembimbing2" class="select select-bordered w-full">
+                    <select name="nip_pembimbing2" id="nip_pembimbing2" readonly class="select select-bordered w-full input-disabled">
                         <?php if (count($dosens) > 0): ?>
                             <?php foreach($dosens as $dosen): ?>
-                                <option value="<?= $dosen->nip ?>">
+                                <option <?= $dosen->nip == $mahasiswa->nip_pembimbing2 ? "selected" : "" ?> value="<?= $dosen->nip ?>">
                                     (<?= $dosen->nip ?>) <?= $dosen->nama ?>
                                 </option>
                             <?php endforeach; ?>
@@ -70,15 +70,15 @@
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4">
                     <label for="file_laporan" class="label">
-                        <span class="label-text">Laporan</span>
+                        <span class="label-text">Laporan Skripsi</span>
                     </label>
-                    <input type="file" name="file_laporan" id="file_laporan" class="input input-bordered w-full" />
+                    <input type="file" name="file_laporan" id="file_laporan" accept="pdf" class="input input-bordered w-full" />
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4">
                     <label for="file_rekomendasi" class="label">
-                        <span class="label-text">Rekomendasi</span>
+                        <span class="label-text">Rekomendasi Pembimbing</span>
                     </label>
-                    <input type="file" name="file_rekomendasi" id="file_rekomendasi" class="input input-bordered w-full" />
+                    <input type="file" name="file_rekomendasi" id="file_rekomendasi" accept="pdf" class="input input-bordered w-full" />
                 </div>
                 <div class="col-span-12 flex justify-end">
                     <button class="btn btn-primary">

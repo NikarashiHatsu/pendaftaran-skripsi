@@ -35,15 +35,15 @@ class Pendaftaran extends Model
 
     // Validation
     protected $validationRules      = [
-        'nomor_bukti' => 'required|min_length[3]|max_length[255]',
+        'nomor_bukti' => 'permit_empty|min_length[3]|max_length[255]',
         'tanggal' => 'required|min_length[3]|max_length[255]',
         'judul_skripsi' => 'required|min_length[3]|max_length[255]',
-        'nim' => 'required|min_length[8]|is_unique[pendaftarans.nim]',
+        'nim' => 'required|min_length[8]',
         'nip_pembimbing1' => 'required|min_length[8]',
         'nip_pembimbing2' => 'required|min_length[8]',
-        'file_laporan' => 'required|min_length[3]|max_length[255]',
-        'file_rekomendasi' => 'required|min_length[3]|max_length[255]',
-        'is_diterima' => 'required',
+        'file_laporan' => 'permit_empty|min_length[3]|max_length[255]',
+        'file_rekomendasi' => 'permit_empty|min_length[3]|max_length[255]',
+        'is_diterima' => 'permit_empty',
     ];
     protected $validationMessages   = [
         'nomor_bukti' => [
@@ -65,7 +65,6 @@ class Pendaftaran extends Model
             'required' => 'NIM harus diisi',
             'min_length' => 'NIM minimal 8 karakter',
             'max_length' => 'NIM maksimal 8 karakter',
-            'is_unique' => 'NIM sudah terdaftar',
         ],
         'nip_pembimbing1' => [
             'required' => 'NIP Pembimbing 1 harus diisi',
@@ -76,17 +75,12 @@ class Pendaftaran extends Model
             'min_length' => 'NIP Pembimbing 2 minimal 8 karakter',
         ],
         'file_laporan' => [
-            'required' => 'File Laporan harus diisi',
             'min_length' => 'File Laporan minimal 3 karakter',
             'max_length' => 'File Laporan maksimal 255 karakter',
         ],
         'file_rekomendasi' => [
-            'required' => 'File Laporan harus diisi',
             'min_length' => 'File Laporan minimal 3 karakter',
             'max_length' => 'File Laporan maksimal 255 karakter',
-        ],
-        'is_diterima' => [
-            'required' => 'Attribut penerimaan harus diisi',
         ],
     ];
     protected $skipValidation       = false;
