@@ -41,6 +41,11 @@ $routes->post('/logout', 'Auth\LogoutController::logout');
 
 $routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'DashboardController::index');
+    $routes->presenter('master_fakultas', [
+        'websafe' => true,
+        'controller' => 'MasterFakultasController',
+        'except' => ['show'],
+    ]);
     $routes->presenter('master_dosen', [
         'websafe' => true,
         'controller' => 'MasterDosenController',
