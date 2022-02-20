@@ -77,6 +77,8 @@ $routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
         'controller' => 'SidangController',
         'except' => ['show'],
     ]);
+
+    $routes->get('laporan', 'LaporanController::index');
 });
 
 /*
