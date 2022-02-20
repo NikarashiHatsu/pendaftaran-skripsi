@@ -71,6 +71,12 @@ $routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
         'controller' => 'PendaftaranController',
         'except' => ['show'],
     ]);
+
+    $routes->presenter('sidang', [
+        'websafe' => true,
+        'controller' => 'SidangController',
+        'except' => ['show'],
+    ]);
 });
 
 /*
