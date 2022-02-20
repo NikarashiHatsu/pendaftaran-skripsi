@@ -2787,6 +2787,13 @@ html {
   --tw-text-opacity: 1;
   color: hsla(var(--er) / var(--tw-text-opacity, 1));
 }
+.badge-info {
+  --tw-bg-opacity: 0.1;
+  background-color: hsla(var(--in) / var(--tw-bg-opacity, 1));
+  border-color: transparent;
+  --tw-text-opacity: 1;
+  color: hsla(var(--in) / var(--tw-text-opacity, 1));
+}
 .badge-success {
   --tw-bg-opacity: 0.1;
   background-color: hsla(var(--su) / var(--tw-bg-opacity, 1));

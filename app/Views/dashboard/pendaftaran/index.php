@@ -23,6 +23,13 @@
                         <th>File Laporan</th>
                         <th>File Rekomendasi</th>
                         <th>Sudah Diterima?</th>
+                        <?php
+
+use App\Models\Pendaftaran;
+
+ if(session()->user->role == "admin"): ?>
+                        <th>Opsi</th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,16 +59,38 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <?php if($skripsi->is_diterima): ?>
+                                    <?php if($skripsi->is_diterima == Pendaftaran::APPROVED): ?>
                                         <span class="badge badge-success">
                                             Diterima
                                         </span>
-                                    <?php else: ?>
+                                    <?php elseif($skripsi->is_diterima == Pendaftaran::DISAPPROVED): ?>
                                         <span class="badge badge-error">
+                                            Ditolak
+                                        </span>
+                                    <?php else: ?>
+                                        <span class="badge badge-info">
                                             Belum Diterima
                                         </span>
                                     <?php endif; ?>
                                 </td>
+                                <?php if(session()->user->role == "admin"): ?>
+                                    <td>
+                                        <?php if ($skripsi->is_diterima == 0): ?>
+                                            <form class="inline" action="<?= base_url('dashboard/pendaftaran/approve/' . $skripsi->id) ?>" method="post">
+                                                <button type="submit" class="btn btn-sm btn-primary">
+                                                    Approve
+                                                </button>
+                                            </form>
+                                            <form class="inline" action="<?= base_url('dashboard/pendaftaran/disapprove/' . $skripsi->id) ?>" method="post">
+                                                <button class="btn btn-sm btn-error">
+                                                    Disapprove
+                                                </button>
+                                            </form>
+                                        <?php else: ?>
+                                            <i>tidak bisa diedit</i>
+                                        <?php endif; ?>
+                                    </td>
+                                <?php endif; ?>
                             </tr>
                             <?php $no++; ?>
                         <?php endforeach; ?>

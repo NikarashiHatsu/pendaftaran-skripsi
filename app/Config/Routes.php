@@ -64,6 +64,8 @@ $routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
         'except' => ['show'],
     ]);
 
+    $routes->post('pendaftaran/approve/(:num)', 'PendaftaranController::approve/$1');
+    $routes->post('pendaftaran/disapprove/(:num)', 'PendaftaranController::disapprove/$1');
     $routes->presenter('pendaftaran', [
         'websafe' => true,
         'controller' => 'PendaftaranController',

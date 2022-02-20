@@ -6,6 +6,9 @@ use CodeIgniter\Model;
 
 class Pendaftaran extends Model
 {
+    public const APPROVED = 1;
+    public const DISAPPROVED = 2;
+
     protected $DBGroup              = 'default';
     protected $table                = 'pendaftarans';
     protected $primaryKey           = 'id';

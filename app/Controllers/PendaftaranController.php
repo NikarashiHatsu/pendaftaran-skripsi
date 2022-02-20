@@ -18,14 +18,25 @@ class PendaftaranController extends ResourceController
      */
     public function index()
     {
-        return view('dashboard/pendaftaran/index', [
-            'skripsis' => $this
+        if (session()->user->role == "admin") {
+            $data_skripsi = $this
+                ->model
+                ->select('pendaftarans.*, d1.nama AS dospem1, d2.nama AS dospem2')
+                ->join('dosens as d1', 'd1.nip = pendaftarans.nip_pembimbing1', 'left')
+                ->join('dosens as d2', 'd2.nip = pendaftarans.nip_pembimbing2', 'left')
+                ->findAll();
+        } else {
+            $data_skripsi = $this
                 ->model
                 ->select('pendaftarans.*, d1.nama AS dospem1, d2.nama AS dospem2')
                 ->where('nim', session()->user->username)
                 ->join('dosens as d1', 'd1.nip = pendaftarans.nip_pembimbing1', 'left')
                 ->join('dosens as d2', 'd2.nip = pendaftarans.nip_pembimbing2', 'left')
-                ->findAll(),
+                ->findAll();
+        }
+
+        return view('dashboard/pendaftaran/index', [
+            'skripsis' => $data_skripsi,
         ]);
     }
 
@@ -127,5 +138,39 @@ class PendaftaranController extends ResourceController
     public function delete($id = null)
     {
         //
+    }
+
+    public function approve($id = null)
+    {
+        try {
+            $this->model->update($id, [
+                'is_diterima' => Pendaftaran::APPROVED,
+            ]);
+
+            if (count($this->model->errors()) > 0) {
+                return redirect()->back()->with('errors', $this->model->errors());
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $th->getMessage());
+        }
+
+        return redirect()->back()->with('success', 'Berhasil mengapprove judul Skripsi.');
+    }
+
+    public function disapprove($id = null)
+    {
+        try {
+            $this->model->update($id, [
+                'is_diterima' => Pendaftaran::DISAPPROVED,
+            ]);
+
+            if (count($this->model->errors()) > 0) {
+                return redirect()->back()->with('errors', $this->model->errors());
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $th->getMessage());
+        }
+
+        return redirect()->back()->with('success', 'Berhasil mengdisapprove judul Skripsi.');
     }
 }
