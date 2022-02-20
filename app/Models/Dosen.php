@@ -36,7 +36,7 @@ class Dosen extends Model
         'nama' => 'required|min_length[3]|max_length[255]',
         'jk' => 'required|in_list[1,0]',
         'email' => 'required|min_length[3]|max_length[255]',
-        'foto' => 'required|min_length[3]|max_length[255]',
+        'foto' => 'permit_empty|min_length[3]|max_length[255]',
         'alamat' => 'required|min_length[3]|max_length[255]',
     ];
     protected $validationMessages   = [
@@ -61,7 +61,6 @@ class Dosen extends Model
             'max_length' => 'Email maksimal 255 karakter',
         ],
         'foto' => [
-            'required' => 'Foto harus diisi',
             'min_length' => 'Foto minimal 3 karakter',
             'max_length' => 'Foto maksimal 255 karakter',
         ],
