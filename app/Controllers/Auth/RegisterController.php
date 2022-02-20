@@ -25,9 +25,9 @@ class RegisterController extends BaseController
         try {
             new RegisterUser($this->request->getPost());
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'An error has occured: ' . $th->getMessage());
+            return redirect()->back()->with('error', 'Telah terjadi error: ' . $th->getMessage());
         }
 
-        return redirect()->to('/login')->with('success', 'You have successfully registered. Please login.');
+        return redirect()->to('/login')->with('success', 'Daftar berhasil. Silahkan login.');
     }
 }

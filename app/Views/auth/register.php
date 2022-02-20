@@ -19,7 +19,7 @@
             <div class="div form-control mb-4">
                 <label for="name" class="label">
                     <span class="label-text">
-                        Full Name
+                        Nama Lengkap
                     </span>
                 </label>
                 <input
@@ -35,7 +35,7 @@
             <div class="div form-control mb-4">
                 <label for="username" class="label">
                     <span class="label-text">
-                        Username
+                        NIM
                     </span>
                 </label>
                 <input
@@ -66,7 +66,7 @@
             <div class="div form-control mb-6">
                 <label for="password_confirmation" class="label">
                     <span class="label-text">
-                        Confirm Password
+                        Konfirmasi Password
                     </span>
                 </label>
                 <input
@@ -80,10 +80,10 @@
 
             <div class="flex items-center justify-end text-sm">
                 <a href="<?= base_url('/login') ?>" class="underline">
-                    Already have an account? Log in here.
+                    Sudah punya akun? Login disini.
                 </a>
                 <button class="btn btn-primary ml-4">
-                    Register
+                    Daftar
                 </button>
             </div>
         </form>

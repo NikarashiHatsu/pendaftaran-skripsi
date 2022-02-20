@@ -19,7 +19,7 @@
             <div class="div form-control mb-4">
                 <label for="username" class="label">
                     <span class="label-text">
-                        Username
+                        NIM
                     </span>
                 </label>
                 <input
@@ -49,7 +49,7 @@
 
             <div class="flex items-center justify-end text-sm">
                 <a href="<?= base_url('/register') ?>" class="underline">
-                    New user? Register here.
+                    Mahasiswa Baru? Daftar disini.
                 </a>
                 <button class="btn btn-primary ml-4">
                     Login
