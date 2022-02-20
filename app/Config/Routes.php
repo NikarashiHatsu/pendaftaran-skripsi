@@ -41,6 +41,7 @@ $routes->post('/logout', 'Auth\LogoutController::logout');
 
 $routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'DashboardController::index');
+
     $routes->presenter('master_fakultas', [
         'websafe' => true,
         'controller' => 'MasterFakultasController',
@@ -56,6 +57,7 @@ $routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
         'controller' => 'MasterDosenController',
         'except' => ['show'],
     ]);
+    $routes->get('master_mahasiswa/get_prodi/(:num)', 'MasterMahasiswaController::getProdi/$1');
     $routes->presenter('master_mahasiswa', [
         'websafe' => true,
         'controller' => 'MasterMahasiswaController',

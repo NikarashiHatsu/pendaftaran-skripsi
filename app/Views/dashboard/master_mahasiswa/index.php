@@ -46,8 +46,8 @@
                                     </div>
                                 </td>
                                 <td><?= $mahasiswa->alamat ?></td>
-                                <td><?= $mahasiswa->kode_fakultas ?></td>
-                                <td><?= $mahasiswa->kode_prodi ?></td>
+                                <td><?= $mahasiswa->fakultas ?></td>
+                                <td><?= $mahasiswa->prodi ?></td>
                                 <td><?= $mahasiswa->dospem1 ?></td>
                                 <td><?= $mahasiswa->dospem2 ?></td>
                                 <td>

@@ -38,19 +38,35 @@
                     </select>
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4">
-                    <label for="fakultas" class="label">
+                    <label for="kode_fakultas" class="label">
                         <span class="label-text">Fakultas</span>
                     </label>
-                    <select name="fakultas" id="fakultas" class="select select-bordered w-full">
-                        <option value="">TODO: Master Fakultas</option>
+                    <select name="kode_fakultas" id="kode_fakultas" class="select select-bordered w-full">
+                        <?php if (count($fakultas) > 0): ?>
+                            <?php foreach($fakultas as $fak): ?>
+                                <option <?= $fak->kode_fakultas == $mahasiswa->kode_fakultas ? "selected" : "" ?> value="<?= $fak->kode_fakultas ?>">
+                                    (<?= $fak->kode_fakultas ?>) <?= $fak->nama ?>
+                                </option>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <option value="" disabled>-Belum ada Fakultas Terdaftar-</option>
+                        <?php endif; ?>
                     </select>
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4">
-                    <label for="prodi" class="label">
+                    <label for="kode_prodi" class="label">
                         <span class="label-text">Prodi</span>
                     </label>
-                    <select name="prodi" id="prodi" class="select select-bordered w-full">
-                        <option value="">TODO: Master Prodi</option>
+                    <select name="kode_prodi" id="kode_prodi" class="select select-bordered w-full">
+                        <?php if (count($prodis) > 0): ?>
+                            <?php foreach($prodis as $prodi): ?>
+                                <option <?= $prodi->kode_prodi == $mahasiswa->kode_prodi ? "selected" : "" ?> value="<?= $prodi->kode_prodi ?>">
+                                    (<?= $prodi->kode_prodi ?>) <?= $prodi->nama ?>
+                                </option>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <option value="" disabled>-Belum ada Prodi Terdaftar-</option>
+                        <?php endif; ?>
                     </select>
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4">
@@ -107,5 +123,26 @@
         </form>
     </div>
 </div>
+
+<script>
+    $().ready(function() {
+        $("#kode_fakultas").on('change', function(e) {
+            $.ajax({
+                url: "<?= base_url('dashboard/master_mahasiswa/get_prodi') ?>/" + $(this).val(),
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    if (data.length > 0) {
+                        $("#kode_prodi").html(data.map(function(item) {
+                            return "<option value=\"" + item.kode_prodi + "\">" + item.nama + "</option>";
+                        }).join(""));
+                    } else {
+                        $("#kode_prodi").html("<option value=\"\">-Belum ada Prodi Terdaftar-</option>");
+                    }
+                }
+            });
+        });
+    });
+</script>
 
 <?= $this->endSection() ?>

@@ -38,19 +38,28 @@
                     </select>
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4">
-                    <label for="fakultas" class="label">
+                    <label for="kode_fakultas" class="label">
                         <span class="label-text">Fakultas</span>
                     </label>
-                    <select name="fakultas" id="fakultas" class="select select-bordered w-full">
-                        <option value="">TODO: Master Fakultas</option>
+                    <select name="kode_fakultas" id="kode_fakultas" class="select select-bordered w-full">
+                        <?php if (count($fakultas) > 0): ?>
+                            <option value="">-Pilih Fakultas-</option>
+                            <?php foreach($fakultas as $fak): ?>
+                                <option value="<?= $fak->kode_fakultas ?>">
+                                    (<?= $fak->kode_fakultas ?>) <?= $fak->nama ?>
+                                </option>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <option value="" disabled>-Belum ada Fakultas Terdaftar-</option>
+                        <?php endif; ?>
                     </select>
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4">
-                    <label for="prodi" class="label">
+                    <label for="kode_prodi" class="label">
                         <span class="label-text">Prodi</span>
                     </label>
-                    <select name="prodi" id="prodi" class="select select-bordered w-full">
-                        <option value="">TODO: Master Prodi</option>
+                    <select name="kode_prodi" id="kode_prodi" class="select select-bordered w-full">
+                        <option value="">-Pilih Fakultas Dulu-</option>
                     </select>
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-4">
@@ -72,7 +81,7 @@
                     <select name="nip_pembimbing1" id="nip_pembimbing1" class="select select-bordered w-full">
                         <?php if (count($dosens) > 0): ?>
                             <?php foreach($dosens as $dosen): ?>
-                                <option value="<?= $dosen->id ?>">
+                                <option value="<?= $dosen->nip ?>">
                                     (<?= $dosen->nip ?>) <?= $dosen->nama ?>
                                 </option>
                             <?php endforeach; ?>
@@ -106,5 +115,26 @@
         </form>
     </div>
 </div>
+
+<script>
+    $().ready(function() {
+        $("#kode_fakultas").on('change', function(e) {
+            $.ajax({
+                url: "<?= base_url('dashboard/master_mahasiswa/get_prodi') ?>/" + $(this).val(),
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    if (data.length > 0) {
+                        $("#kode_prodi").html(data.map(function(item) {
+                            return "<option value=\"" + item.kode_prodi + "\">" + item.nama + "</option>";
+                        }).join(""));
+                    } else {
+                        $("#kode_prodi").html("<option value=\"\">-Belum ada Prodi Terdaftar-</option>");
+                    }
+                }
+            });
+        });
+    });
+</script>
 
 <?= $this->endSection() ?>
