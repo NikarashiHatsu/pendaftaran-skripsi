@@ -44,6 +44,12 @@ $routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
     $routes->presenter('master_dosen', [
         'websafe' => true,
         'controller' => 'MasterDosenController',
+        'except' => ['show'],
+    ]);
+    $routes->presenter('master_mahasiswa', [
+        'websafe' => true,
+        'controller' => 'MasterMahasiswaController',
+        'except' => ['show'],
     ]);
 });
 

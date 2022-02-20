@@ -74,8 +74,8 @@ class Mahasiswa extends Model
         ],
         'nip_pembimbing1' => [
             'required' => 'NIP pembimbing 1 harus diisi',
-            'min_length' => 'NIP pembimbing 1 minimal 16 karakter',
-            'max_length' => 'NIP pembimbing 1 maksimal 16 karakter',
+            'min_length' => 'NIP pembimbing 1 minimal 8 karakter',
+            'max_length' => 'NIP pembimbing 1 maksimal 8 karakter',
         ],
         'nip_pembimbing2' => [
             'required' => 'NIP pembimbing 2 harus diisi',
