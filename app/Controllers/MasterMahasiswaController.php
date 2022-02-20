@@ -51,8 +51,6 @@ class MasterMahasiswaController extends ResourceController
      */
     public function create()
     {
-        // dd($this->request->getPost());
-
         try {
             $file = $this->request->getFile('foto');
 

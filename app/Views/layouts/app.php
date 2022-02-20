@@ -74,52 +74,85 @@
                         </a>
                     </li>
 
+                    <?php if(session()->user->role == "admin"): ?>
+                        <li class="menu-title mt-4">
+                            <span>
+                                Data Master
+                            </span>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('/dashboard/master_fakultas') ?>" class="<?= current_url(true)->getSegment(2) == 'master_fakultas' ? 'active' : '' ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <span class="ml-2">
+                                    Master Fakultas
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('/dashboard/master_prodi') ?>" class="<?= current_url(true)->getSegment(2) == 'master_prodi' ? 'active' : '' ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                                </svg>
+                                <span class="ml-2">
+                                    Master Prodi
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('/dashboard/master_mahasiswa') ?>" class="<?= current_url(true)->getSegment(2) == 'master_mahasiswa' ? 'active' : '' ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                                </svg>
+                                <span class="ml-2">
+                                    Master Mahasiswa
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('/dashboard/master_dosen') ?>" class="<?= current_url(true)->getSegment(2) == 'master_dosen' ? 'active' : '' ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                                </svg>
+                                <span class="ml-2">
+                                    Master Dosen
+                                </span>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+
                     <li class="menu-title mt-4">
                         <span>
-                            Data Master
+                            Mahasiswa
                         </span>
                     </li>
                     <li>
-                        <a href="<?= base_url('/dashboard/master_fakultas') ?>" class="<?= current_url(true)->getSegment(2) == 'master_fakultas' ? 'active' : '' ?>">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <span class="ml-2">
-                                Master Fakultas
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('/dashboard/master_prodi') ?>" class="<?= current_url(true)->getSegment(2) == 'master_prodi' ? 'active' : '' ?>">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                            </svg>
-                            <span class="ml-2">
-                                Master Prodi
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('/dashboard/master_mahasiswa') ?>" class="<?= current_url(true)->getSegment(2) == 'master_mahasiswa' ? 'active' : '' ?>">
+                        <?php
+                            $data_mahasiswa = (new \App\Models\Mahasiswa())->where('nim', session()->user->username)->first();
+                        ?>
+                        <a href="<?= base_url('/dashboard/master_mahasiswa/edit/' . $data_mahasiswa->id) ?>" class="<?= current_url(true)->getSegment(2) == 'master_mahasiswa' ? 'active' : '' ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path d="M12 14l9-5-9-5-9 5 9 5z" />
                                 <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
                             </svg>
                             <span class="ml-2">
-                                Master Mahasiswa
+                                Detail Mahasiswa
                             </span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('/dashboard/master_dosen') ?>" class="<?= current_url(true)->getSegment(2) == 'master_dosen' ? 'active' : '' ?>">
+                        <a href="<?= base_url('/dashboard/pendaftaran/new') ?>" class="<?= current_url(true)->getSegment(2) == 'pendaftaran_skripsi' ? 'active' : '' ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4" />
                             </svg>
                             <span class="ml-2">
-                                Master Dosen
+                                Pendaftaran Skripsi
                             </span>
                         </a>
                     </li>

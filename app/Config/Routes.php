@@ -63,6 +63,12 @@ $routes->group('dashboard', ['filter' => 'auth'], function ($routes) {
         'controller' => 'MasterMahasiswaController',
         'except' => ['show'],
     ]);
+
+    $routes->presenter('pendaftaran', [
+        'websafe' => true,
+        'controller' => 'PendaftaranController',
+        'except' => ['show'],
+    ]);
 });
 
 /*
