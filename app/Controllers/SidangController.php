@@ -39,6 +39,15 @@ class SidangController extends ResourceController
             return $sidang->nomor_bukti;
         }, (new Sidang)->findAll());
 
+        if (count($sidang_yang_sudah_terpilih) == 0) {
+            return view('dashboard/sidang/new', [
+                'skripsis' => (new Pendaftaran())
+                    ->where('is_diterima', Pendaftaran::APPROVED)
+                    ->findAll(),
+                'dosens' => (new Dosen())->findAll(),
+            ]);
+        }
+
         return view('dashboard/sidang/new', [
             'skripsis' => (new Pendaftaran())
                 ->where('is_diterima', Pendaftaran::APPROVED)
