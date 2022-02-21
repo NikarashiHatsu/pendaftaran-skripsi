@@ -30,7 +30,7 @@ class Prodi extends Model
     // Validation
     protected $validationRules      = [
         'kode_fakultas' => 'required|min_length[3]|max_length[3]',
-        'kode_prodi' => 'required|min_length[3]|max_length[3]|is_unique[prodi.kode_prodi]',
+        'kode_prodi' => 'required|min_length[3]|max_length[3]|is_unique[prodis.kode_prodi]',
         'nama' => 'required|min_length[3]|max_length[255]',
     ];
     protected $validationMessages   = [
